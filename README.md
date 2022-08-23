@@ -5,6 +5,8 @@ Inputs.NET is an easy-to-use, extendible, free and open-source library for the .
 
 If you like this project and want to support further development, please consider leaving a star.
 
+**So far only tested on Windows 11!**
+
 ## "Why though?"
 After getting annoyed about how tedious it can be to reliably and securely manipulate the mouse & keyboard on windows, I decided to take this matter into my own hands. Hence why I created this project.  
 
