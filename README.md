@@ -51,11 +51,11 @@ To use this library, you may go to the Release-page and download the dll.
 For more examples, see the demo project.
 
 ## Custom methods
-Besides the built-in manipulation-methods, you may add your own using the interfaces provided by the library.
+Besides the built-in input-methods, you may add your own using the interfaces provided by the library.
 
 You may look at the implementations of the built-in methods for reference.
 
-Here is a quick example as to how the implementation of a custom manipulation-method may look:
+Here is a quick example as to how the implementation of a custom input-method may look:
 ```csharp
 // placeholder
 ```
