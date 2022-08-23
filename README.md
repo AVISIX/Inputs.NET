@@ -27,6 +27,7 @@ I originally wrote this for myself, but after seeing how useful it could be for 
 - Keyboard &  mouse hooks using the [WinApi](https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-setwindowshookexa)
 - Keyboard-macro recorder & player-classes
 - Usermode keyboard & mouse spoofer
+- WinApi call-spoofer
 
 #### Planned features
 - Add [Interception driver](https://github.com/oblitum/Interception) support
