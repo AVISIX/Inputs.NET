@@ -33,6 +33,7 @@ I originally wrote this for myself, but after seeing how useful it could be for 
 
 #### Planned features
 - Add [Interception driver](https://github.com/oblitum/Interception) support
+- Add mouse easings support
 - *Search for and add more methods.*
 
 ## Supported Runtimes
