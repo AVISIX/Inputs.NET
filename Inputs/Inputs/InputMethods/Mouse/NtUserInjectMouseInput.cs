@@ -54,7 +54,7 @@ namespace Inputs.InputMethods.Mouse
 
                     unsafe
                     {
-                        *(void**)&address = (void*)address; // https://github.com/Zpes/mouse-input-injection/blob/master/direct_mouse_input/mouse_interface.hpp#L35
+                        *(void**)&address = (void*)address; // thanks <3 https://github.com/Zpes/mouse-input-injection/blob/master/direct_mouse_input/mouse_interface.hpp#L35
                     }
 
                     Native.User32.MOUSEINPUT input = new Native.User32.MOUSEINPUT();

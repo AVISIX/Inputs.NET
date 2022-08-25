@@ -71,6 +71,7 @@ namespace Inputs.Hooks
                 Native.User32.UnhookWindowsHookEx(hook);
         }
 
+        #region Core 
         private IntPtr SetHook(Native.User32.HookProcedure proc, int hkType)
         {
             using (Process process = Process.GetCurrentProcess())
@@ -112,5 +113,6 @@ namespace Inputs.Hooks
 
             return Native.User32.CallNextHookEx(hook, nCode, wParam, lParam);
         }
+        #endregion
     }
 }

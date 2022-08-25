@@ -88,7 +88,6 @@ namespace Inputs
             MethodObject = MethodResolver<IMouseInput>.GetMethodObjectFor<T>();
         }
 
-
         /// <summary>
         /// This is an optional way to initialize all the "spoofing-byte-arrays" early on,
         /// because otherwise the the arrays will be initialized when calling a function related to it the first time.

@@ -10,9 +10,6 @@ using System.Threading.Tasks;
 
 namespace Inputs.InputMethods
 {
-    /// <summary>
-    /// A unique class to Spoof Inputs.
-    /// </summary>
     internal static class InputSpoofer
     {
         private static Native.User32.HookProcedure mouseHookProc = MouseSpoofCallback;

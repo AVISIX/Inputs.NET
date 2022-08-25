@@ -21,7 +21,7 @@ namespace Inputs
         static Keyboard()
         {
             // initialize the method object
-            SetMethodFrom<keybd_event>();
+            SetMethodFrom<KeyboardEvent>();
             standardInput = MethodResolver<IKeyboardInput>.GetMethodObjectFor<NtUserSendInput>();
             ForceInit();
             AppDomain.CurrentDomain.ProcessExit += CurrentDomain_ProcessExit;

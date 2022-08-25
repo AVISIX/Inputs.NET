@@ -30,7 +30,7 @@ namespace Inputs.Misc
                         keyType = MOUSEEVENTF_FLAGS.MOUSEEVENTF_MIDDLEDOWN;
                         break;
 
-                    default: throw new Exception("Unsupported Key Type.");
+                    default: throw new NotSupportedException("Unsupported Key Type.");
                 }
             }
             else
@@ -49,7 +49,7 @@ namespace Inputs.Misc
                         keyType = MOUSEEVENTF_FLAGS.MOUSEEVENTF_MIDDLEUP;
                         break;
 
-                    default: throw new Exception("Unsupported Key Type.");
+                    default: throw new NotSupportedException("Unsupported Key Type.");
                 }
             }
 

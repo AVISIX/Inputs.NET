@@ -9,9 +9,9 @@ namespace Inputs.InputMethods.Keyboard
     /// <summary>
     /// A keyboard input method utilizing the deprecated 'keybd_event' win32 function.
     /// </summary>
-    internal sealed class keybd_event : IKeyboardInput
+    internal sealed class KeyboardEvent : IKeyboardInput
     {
-        public string Name => nameof(keybd_event);
+        public string Name => nameof(KeyboardEvent);
 
         private List<VK> heldKeys = new List<VK>();
 
@@ -65,6 +65,6 @@ namespace Inputs.InputMethods.Keyboard
             }
         }
 
-        ~keybd_event() => Dispose();
+        ~KeyboardEvent() => Dispose();
     }
 }

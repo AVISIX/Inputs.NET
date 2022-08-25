@@ -98,7 +98,7 @@ namespace Inputs.InputMethods.Drivers
 
                 if (handle == IntPtr.Zero)
                 {
-                    string dd_dll = Path.Combine(DDXPath, Environment.Is64BitProcess ? "DD94687.64.dll" : "DD94687.32.dll");
+                    string dd_dll = Path.Combine(DDXPath, Environment.Is64BitOperatingSystem ? "DD94687.64.dll" : "DD94687.32.dll");
 
                     handle = Native.Kernel32.LoadLibrary(dd_dll);
 
