@@ -12,11 +12,20 @@
 		<Version>1.0.0.0</Version>
 		<UseWPF>true</UseWPF>
 		<UseWindowsForms>true</UseWindowsForms>
+		<Platforms>AnyCPU;x64;x86</Platforms>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<None Remove="Resources\ddx.zip" />
 	</ItemGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+		<OutputPath>$(ProjectDir)..\..\Build\x86</OutputPath>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+		<OutputPath>$(ProjectDir)..\..\Build\x64</OutputPath>
+	</PropertyGroup>
 
 	<ItemGroup>
 		<EmbeddedResource Include="Resources\ddx.zip">
