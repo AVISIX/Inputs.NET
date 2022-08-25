@@ -27,7 +27,7 @@ namespace Inputs.Tests
 
         private void DoMouseMoveTest()
         {
-            Mouse.SetCursorPos(0, 0);
+            Mouse.SetCursorPos(10, 10);
             var origin = Mouse.GetCursorPos();
 
             Thread.Sleep(250);
