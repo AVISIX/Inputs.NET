@@ -1,3 +1,4 @@
+
 # Inputs.NET
 Inputs.NET is an easy-to-use, extendible, free and open-source library for the .NET ecosystem. It implements several methods to manipulate the mouse and keyboard on the windows operating system. 
 
@@ -142,6 +143,11 @@ Please do **NOT** open a issue because you are being detected by some kind of An
 ## Thanks to
 - [ddxoft](https://github.com/ddxoft) for creating his virtual mouse & keyboard-driver.
 - [Zpes](https://github.com/Zpes) for his project utilizing the undocumented NtUserInjectMouseInput  function.
+
+## How to build
+To build the project for all its supported frameworks simply run the "Build.bat"-script.
+
+**Please Note**: You must add the directory of Visual Studio (*devenv.exe*) to your PATH-environment variable!
 
 ## Please Note
 As I am developing this library in my free time, I simply cannot provide warranty that this project will be maintained in the future. Also I do not take responsibility for any misuse of this library. 
