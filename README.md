@@ -1,5 +1,6 @@
 
 
+
 # Inputs.NET
 Inputs.NET is an easy-to-use, extendible, free and open-source library for the .NET ecosystem. It implements several methods to manipulate the mouse and keyboard on the windows operating system. 
 
@@ -15,7 +16,7 @@ I originally wrote this for myself, but after seeing how useful it could be for 
 ## Features
 #### Mouse manipulation
 - [mouse_event](https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-mouse_event)
-- NtUserSendInput (*undocumented*)
+- NtUserSendInput (*undocumented*)  
 - NtUserInjectMouseInput (*undocumented*)
 - [ddxoft virtual mouse driver](https://github.com/ddxoft/master)
 
@@ -49,29 +50,51 @@ To use this library, you may go to the Release-page and download the dll.
 
 #### Mouse 
 ```csharp
-// set the mouse method to use the ddxoft virtual mouse & keyboard driver
+// Set the mouse method to use the ddxoft virtual mouse & keyboard driver
 Mouse.SetMethodFrom<MouseDD>(); 
 
-// sets the current position of the cursor
+// Sets the current position of the cursor
 Mouse.SetCursorPos(50, 150); 
 
-// moves the mouse by 50 pixels relative to its current position
+// Moves the mouse by 50 pixels relative to its current position
 Mouse.Move(50, 50); 
 
-// will click the left mouse-button with a 1 second delay between pressing & releasing
+// Will set the cursor position to the center of the given UIElement.
+Mouse.SetCursorPos(myButton);
+
+// Will click the left mouse-button with a 1 second delay between pressing & releasing
 Mouse.Click(MouseKey.Left, 1); 
 ```
 
 #### Keyboard 
 ```csharp 
-// set the keyboard method to use the undocumented "NtUserInjectKeyboardInput"-function
+// Set the keyboard method to use the undocumented "NtUserInjectKeyboardInput"-function
 Keyboard.SetMethodFrom<NtUserInjectKeyboardInput>(); 
 
-// click the "W"-key witha  1 second delay between pressing & releasing
+// Click the "W"-key witha  1 second delay between pressing & releasing
 Keyboard.Click(VK.KEY_W, 1); 
 ```
 
 For more examples, see the demo project.
+
+## Built-in methods
+Here you can see how to switch between all the built-in input-methods.
+
+#### Mouse
+```csharp
+Mouse.SetMethodFrom<MouseEvent>();
+Mouse.SetMethodFrom<NtUserInjectMouseInput>();
+Mouse.SetMethodFrom<NtUserSendInput>();
+Mouse.SetMethodFrom<MouseDD>();
+```
+
+#### Keyboard
+```csharp
+Keyboard.SetMethodFrom<KeyboardEvent>();
+Keyboard.SetMethodFrom<NtUserInjectKeyboardInput>();
+Keyboard.SetMethodFrom<NtUserSendInput>(); // different namespace than for mouse!
+Keyboard.SetMethodFrom<KeyboardDD>();
+```
 
 ## Custom methods
 Besides the built-in input-methods, you can also add your own using the interfaces provided by the library.
@@ -115,9 +138,9 @@ Mouse.SetMethodFrom<MyMouseMethod>(); // reflection will find it automatically
 ## Contributing
 If you found or created a new method to manipulate either the mouse or keyboard and feel like sharing it with the public, please open a pull request and I will look at it.
 
-Please do **NOT** open a issue because you are being detected by some kind of Anti-Cheat etc. I will ignore and close it.
-
 Any help is greatly appreciated.
+
+Please do **NOT** open a issue because you are being detected by some kind of Anti-Cheat etc. I will ignore and close it.
 
 ## Thanks to
 - [ddxoft](https://github.com/ddxoft) for creating his virtual mouse & keyboard-driver.
