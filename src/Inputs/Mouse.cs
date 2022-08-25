@@ -12,6 +12,8 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Automation;
 using System.Windows.Forms;
 
 using static Inputs.Misc.Native.Kernel32;
@@ -178,11 +180,30 @@ namespace Inputs
         }
 
         /// <summary>
-        /// Set the Cursor Position to a specific point. 
+        /// Set the cursor position to a specific point. 
         /// </summary>
         /// <param name="xy">The coordinates as point struct.</param>
         /// <param name="spoofCall">Enable or disable if the call should get spoofed.</param>
         public static void SetCursorPos(Point<int> xy) => SetCursorPos(xy.X, xy.Y);
+
+        /// <summary>
+        /// Set the Cursor position to a specific UIElement.
+        /// </summary>
+        /// <param name="element">The element you want to place the cursor on.</param>
+        /// <exception cref="ArgumentNullException">If the provided element is <see langword="null"/>.</exception>
+        public static void SetCursorPos(UIElement element)
+        {
+            if(element == null)
+                throw new ArgumentNullException(nameof(element));
+
+            var p = element.PointToScreen(new Point(0d, 0d));
+            var size = element.GetElementPixelSize();
+
+            p.X = p.X + size.Width / 2;
+            p.Y = p.Y + size.Height / 2;
+
+            SetCursorPos((int)Math.Round(p.X), (int)Math.Round(p.Y));
+        }
         #endregion
 
         #region GetCursorPos
