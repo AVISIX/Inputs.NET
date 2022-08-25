@@ -115,6 +115,12 @@ namespace Inputs.Tests
             Thread.Sleep(250);
             hook.Unhook();
             Mouse.Release(k);
+
+            if(k == MouseKey.Right)
+            {
+                Mouse.Move(-5, -5);
+                Mouse.Click(k);
+            }
         }
 
         [TestMethod("Test MouseEvent-click")]

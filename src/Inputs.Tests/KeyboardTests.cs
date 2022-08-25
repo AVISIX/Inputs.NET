@@ -35,8 +35,36 @@ namespace Inputs.Tests
             Keyboard.Press(k);
             hook.Unhook();
             Keyboard.Release(k);
+            Keyboard.Click(k);
         }
 
+        [TestMethod("Test KeyboardEvent-clicking")]
+        public void TestKeyboardEvent1()
+        {
+            Keyboard.SetMethodFrom<KeyboardEvent>();
+            TestClick(VK.KEY_LWIN, true);
+        }
+
+        [TestMethod("Test NtUserInjectKeyboardInput-clicking")]
+        public void TestUserInjectKeyboardInput2()
+        {
+            Keyboard.SetMethodFrom<NtUserInjectKeyboardInput>();
+            TestClick(VK.KEY_LWIN, true);
+        }
+
+        [TestMethod("Test NtUserSendInput-clicking")]
+        public void TestntUserSendInput3()
+        {
+            Keyboard.SetMethodFrom<NtUserSendInput>();
+            TestClick(VK.KEY_LWIN, true);
+        }
+
+        [TestMethod("Test KeyboardDD-click")]
+        public void TestKeyboardDD4()
+        {
+            Keyboard.SetMethodFrom<KeyboardDD>();
+            TestClick(VK.KEY_LWIN, true);
+        }
         #endregion
     }
 }
