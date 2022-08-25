@@ -1,6 +1,3 @@
-
-
-
 # Inputs.NET
 Inputs.NET is an easy-to-use, extendible, free and open-source library for the .NET ecosystem. It implements several methods to manipulate the mouse and keyboard on the windows operating system. 
 
@@ -28,8 +25,8 @@ I originally wrote this for myself, but after seeing how useful it could be for 
 
 #### Other features
 - Keyboard &  mouse hooks using the [WinApi](https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-setwindowshookexa)
-- Keyboard-macro recorder & player-classes
-- Usermode keyboard & mouse spoofer
+- [Keyboard-macro recorder & player-classes](https://github.com/AVISIX/Inputs.NET/tree/main/src/Inputs/Macros)
+- Automatic keyboard & mouse call-spoofer (*executing process only*)
 - WinApi call-spoofer
 
 #### Planned features
@@ -71,7 +68,7 @@ Mouse.Click(MouseKey.Left, 1);
 // Set the keyboard method to use the undocumented "NtUserInjectKeyboardInput"-function
 Keyboard.SetMethodFrom<NtUserInjectKeyboardInput>(); 
 
-// Click the "W"-key witha  1 second delay between pressing & releasing
+// Click the "W"-key with a 1 second delay between pressing & releasing
 Keyboard.Click(VK.KEY_W, 1); 
 ```
 
