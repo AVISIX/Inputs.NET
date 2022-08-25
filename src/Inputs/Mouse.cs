@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
@@ -76,14 +77,14 @@ namespace Inputs
         /// Enable or disable, if win32 calls should get spoofed.
         /// Default is 'true'.
         /// </summary>
-        public static bool SpoofCalls { get; set; }
+        public static bool SpoofCalls { get; set; } = true;
         #endregion
 
         /// <summary>
         /// Set the current input-method. This will reset all the currently held down keys.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        public static void SetMethodFrom<T>()
+        public static void SetMethodFrom<T>() where T : class
         {
             MethodObject?.Dispose();
             MethodObject = MethodResolver<IMouseInput>.GetMethodObjectFor<T>();

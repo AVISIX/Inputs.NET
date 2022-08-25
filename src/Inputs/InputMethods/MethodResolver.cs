@@ -11,12 +11,13 @@ namespace Inputs.InputMethods
 {
     internal class MethodResolver<InputType> where InputType : class
     {
-        private static InputType FindInAssembly<T>(Assembly assembly)
+        private static InputType FindInAssembly<T>(Assembly assembly) where T : class
         {
             if (assembly == null)
                 return null;
 
-            var inputMethod = assembly.GetTypes().Where(t => typeof(T).IsAssignableFrom(t)).FirstOrDefault();
+            var inputMethods = assembly.GetTypes().Where(t => t.Equals(typeof(T))).ToList(); 
+            var inputMethod = inputMethods.FirstOrDefault();
 
             if (inputMethod == null)
                 return null;
@@ -24,7 +25,7 @@ namespace Inputs.InputMethods
             return Activator.CreateInstance(inputMethod) as InputType;
         }
 
-        public static InputType GetMethodObjectFor<T>()
+        public static InputType GetMethodObjectFor<T>() where T : class
         {
             foreach (var asm in AppDomain.CurrentDomain.GetAssemblies().ToList())
             {

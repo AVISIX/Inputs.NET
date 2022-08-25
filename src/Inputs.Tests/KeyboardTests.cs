@@ -1,4 +1,7 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Inputs.Hooks;
+using Inputs.InputMethods.Keyboard;
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using System;
 using System.Collections.Generic;
@@ -16,5 +19,24 @@ namespace Inputs.Tests
         {
 
         }
+
+        #region Test Clicking
+
+        private void TestClick(VK k, bool sim = true)
+        {
+            KeyboardHook hook = new KeyboardHook();
+
+            hook.OnKeyPressed += new KeyboardHookEventHandler((key, simulated) =>
+            {
+                Assert.AreEqual(key, k);
+                Assert.AreEqual(simulated, sim);
+            });
+
+            Keyboard.Press(k);
+            hook.Unhook();
+            Keyboard.Release(k);
+        }
+
+        #endregion
     }
 }

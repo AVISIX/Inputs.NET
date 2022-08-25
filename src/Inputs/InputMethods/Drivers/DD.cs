@@ -24,6 +24,11 @@ namespace Inputs.InputMethods.Drivers
         private const string ResourcePath = "Inputs.Resources.ddx.zip";
         private IntPtr handle = IntPtr.Zero;
 
+        ~DD()
+        {
+            Uninstall();
+        }
+
         #region Private Delegates
         private delegate int DD_MouseButton(int button);
         private delegate int DD_MouseWheel(int rotation);
