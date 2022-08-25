@@ -46,8 +46,29 @@ I originally wrote this for myself, but after seeing how useful it could be for 
 
 ## Example usage
 To use this library, you may go to the Release-page and download the dll.
+
+#### Mouse 
+```csharp
+// set the mouse method to use the ddxoft virtual mouse & keyboard driver
+Mouse.SetMethodFrom<MouseDD>(); 
+
+// sets the current position of the cursor
+Mouse.SetCursorPos(50, 150); 
+
+// moves the mouse by 50 pixels relative to its current position
+Mouse.Move(50, 50); 
+
+// will click the left mouse-button with a 1 second delay between pressing & releasing
+Mouse.Click(MouseKey.Left, 1); 
+```
+
+#### Keyboard 
 ```csharp 
-// placeholder
+// set the keyboard method to use the undocumented "NtUserInjectKeyboardInput"-function
+Keyboard.SetMethodFrom<NtUserInjectKeyboardInput>(); 
+
+// click the "W"-key witha  1 second delay between pressing & releasing
+Keyboard.Click(VK.KEY_W, 1); 
 ```
 
 For more examples, see the demo project.
@@ -59,7 +80,36 @@ You may look at the implementations of the built-in methods for reference.
 
 Here is a quick example as to how the implementation of a custom input-method could look:
 ```csharp
-// placeholder
+public class MyMouseMethod : IMouseInput
+{
+    public string Name => nameof(MyMouseMethod);
+
+    public bool MoveBy(int x = 0, int y = 0)
+    {
+      // add move logic
+    } 
+
+    public bool Press(MouseKey key = MouseKey.Left)
+    {
+      // add press logic
+    }
+
+    public bool Release(MouseKey key = MouseKey.Left)
+    {
+      // add release logic
+    }
+
+    public void Dispose()
+    {
+      // add dispose logic
+    }
+
+    ~MyMouseMethod() => Dispose();
+}
+
+...
+
+Mouse.SetMethodFrom<MyMouseMethod>(); // reflection will find it automatically
 ```
 
 ## Contributing
