@@ -38,6 +38,8 @@ I originally wrote this for myself, but after seeing how useful it could be for 
 
 ## Supported Runtimes
 - .NET Framework 4.7.1
+- .NET Framework 4.7.2
+- .NET Framework 4.8
 - .NET Core 3.1
 - .NET 5
 - .NET 6
