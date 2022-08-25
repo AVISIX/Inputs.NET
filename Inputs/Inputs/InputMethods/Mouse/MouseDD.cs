@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Inputs.InputMethods.Mouse
 {
-    internal sealed class MouseDD : IMouseInput
+    public sealed class MouseDD : IMouseInput
     {
         public string Name => nameof(MouseDD);
 
@@ -18,7 +18,10 @@ namespace Inputs.InputMethods.Mouse
             }
         }
 
-        public bool MoveBy(int x = 0, int y = 0) => DD.Mouse.MoveBy(x, y);
+        public bool MoveBy(int x = 0, int y = 0)
+        {
+            return DD.Mouse.MoveBy(x, y);
+        }
 
         public bool Press(MouseKey key = MouseKey.Left)
         {

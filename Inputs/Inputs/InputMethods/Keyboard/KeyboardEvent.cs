@@ -9,7 +9,7 @@ namespace Inputs.InputMethods.Keyboard
     /// <summary>
     /// A keyboard input method utilizing the deprecated 'keybd_event' win32 function.
     /// </summary>
-    internal sealed class KeyboardEvent : IKeyboardInput
+    public sealed class KeyboardEvent : IKeyboardInput
     {
         public string Name => nameof(KeyboardEvent);
 

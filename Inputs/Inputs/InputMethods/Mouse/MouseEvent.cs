@@ -3,13 +3,14 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace Inputs.InputMethods.Mouse
 {
     /// <summary>
     /// A mouse input method utilizing the 'MouseEvent' win32 function.
     /// </summary>
-    internal sealed class MouseEvent : IMouseInput
+    public sealed class MouseEvent : IMouseInput
     {
         public string Name => nameof(MouseEvent);
 
@@ -17,7 +18,12 @@ namespace Inputs.InputMethods.Mouse
 
         public bool MoveBy(int x = 0, int y = 0)
         {
-            Native.User32.mouse_event(Native.User32.MOUSEEVENTF_FLAGS.MOUSEEVENTF_MOVE, x, y, 0, 0);
+            var absolute = Misc.Help.CalculateAbsolutePosition(x, y);
+            x = absolute.X;
+            y = absolute.Y;
+
+            Native.User32.mouse_event(Native.User32.MOUSEEVENTF_FLAGS.MOUSEEVENTF_MOVE | Native.User32.MOUSEEVENTF_FLAGS.MOUSEEVENTF_ABSOLUTE, x, y, 0, 0);
+      
             return true;
         }
 

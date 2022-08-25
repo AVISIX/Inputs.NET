@@ -8,6 +8,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 using static Inputs.Misc.Native.Kernel32;
 
@@ -15,6 +16,22 @@ namespace Inputs.Misc
 {
     internal static class Help
     {
+        public static Point<int> CalculateAbsolutePosition(int x, int y)
+        {
+            var origin = Mouse.GetCursorPos();
+
+            Screen screen = Screen.FromPoint(new System.Drawing.Point()
+            {
+                X = origin.X,
+                Y = origin.Y
+            });
+
+            x = ((int)(65536.0 / (double)screen.Bounds.Width * (double)x)) + 1;
+            y = ((int)(65536.0 / (double)screen.Bounds.Height * (double)y)) + 1;
+
+            return new Point<int>(x, y);
+        }
+
         public static void DispatchInThread(Action block)
         {
             if (block != null)

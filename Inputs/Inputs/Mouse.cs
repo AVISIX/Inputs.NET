@@ -11,6 +11,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 using static Inputs.Misc.Native.Kernel32;
 
@@ -56,8 +57,8 @@ namespace Inputs
         // cleanup (destructor alternative)
         private static void CurrentDomain_ProcessExit(object sender, EventArgs e)
         {
-            standardInput.Dispose();
-            MethodObject.Dispose();
+            standardInput?.Dispose();
+            MethodObject?.Dispose();
         }
 
         #region Public Properties
@@ -82,9 +83,9 @@ namespace Inputs
         /// Set the current input-method. This will reset all the currently held down keys.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        public static void SetMethodFrom<T>() where T : class 
+        public static void SetMethodFrom<T>()
         {
-            MethodObject.Dispose();
+            MethodObject?.Dispose();
             MethodObject = MethodResolver<IMouseInput>.GetMethodObjectFor<T>();
         }
 
@@ -100,14 +101,14 @@ namespace Inputs
 
             if (NtUserSetCursorPosBytes.Length == 0)
             {
-                var temp = Help.GetUnmanagedFunctionBytes("win32u", "NtUserSetCursorPos");
+                var temp = Inputs.Misc.Help.GetUnmanagedFunctionBytes("win32u", "NtUserSetCursorPos");
                 if (temp.Length > 0)
                     NtUserSetCursorPosBytes = crypto.Encrypt(temp);
             }
 
             if (NtUserGetCursorPosBytes.Length == 0)
             {
-                var temp = Help.GetUnmanagedFunctionBytes("win32u", "NtUserGetCursorPos");
+                var temp = Inputs.Misc.Help.GetUnmanagedFunctionBytes("win32u", "NtUserGetCursorPos");
                 if (temp.Length > 0)
                     NtUserGetCursorPosBytes = crypto.Encrypt(temp);
             }
@@ -138,7 +139,7 @@ namespace Inputs
                 if (NtUserSetCursorPosBytes.Length == 0)
                 {
                     // we want to call the syscall directly 
-                    NtUserSetCursorPosBytes = Help.GetUnmanagedFunctionBytes("win32u", "NtUserSetCursorPos");
+                    NtUserSetCursorPosBytes = Inputs.Misc.Help.GetUnmanagedFunctionBytes("win32u", "NtUserSetCursorPos");
 
                     // if everything fails, just do a normal call 
                     if (NtUserSetCursorPosBytes.Length == 0)
@@ -209,7 +210,7 @@ namespace Inputs
                 // same story
                 if (NtUserGetCursorPosBytes.Length == 0)
                 {
-                    NtUserGetCursorPosBytes = Help.GetUnmanagedFunctionBytes("win32u", "NtUserGetCursorPos");
+                    NtUserGetCursorPosBytes = Inputs.Misc.Help.GetUnmanagedFunctionBytes("win32u", "NtUserGetCursorPos");
 
                     if (NtUserGetCursorPosBytes.Length == 0)
                         return GetCursorPosW32();

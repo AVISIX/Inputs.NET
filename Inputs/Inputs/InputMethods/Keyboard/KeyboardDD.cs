@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Inputs.InputMethods.Keyboard
 {
-    internal class KeyboardDD : IKeyboardInput
+    public class KeyboardDD : IKeyboardInput
     {
         public string Name => nameof(KeyboardDD);
 

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 using static Inputs.Misc.Native.Kernel32;
 
@@ -12,7 +13,7 @@ namespace Inputs.InputMethods.Mouse
     /// <summary>
     /// A mouse input method utilizing the undocumented 'NtUserInjectMouseInput' NT function.
     /// </summary>
-    internal class NtUserInjectMouseInput : IMouseInput
+    public class NtUserInjectMouseInput : IMouseInput
     {
         public string Name => nameof(NtUserInjectMouseInput);
 
@@ -84,7 +85,11 @@ namespace Inputs.InputMethods.Mouse
 
         public bool MoveBy(int x = 0, int y = 0)
         {
-            return Call(~Native.User32.MOUSEEVENTF_FLAGS.MOUSEEVENTF_MOVE | ~Native.User32.MOUSEEVENTF_FLAGS.MOUSEEVENTF_ABSOLUTE, x, y, 0, 0);
+            var absolute = Misc.Help.CalculateAbsolutePosition(x, y);
+            x = absolute.X;
+            y = absolute.Y;
+
+            return Call(Native.User32.MOUSEEVENTF_FLAGS.MOUSEEVENTF_MOVE | Native.User32.MOUSEEVENTF_FLAGS.MOUSEEVENTF_ABSOLUTE, x, y, 0, 0);
         }
 
         public bool Press(MouseKey key = MouseKey.Left)

@@ -9,7 +9,7 @@ using static Inputs.Misc.Native.Kernel32;
 
 namespace Inputs.InputMethods.Keyboard
 {
-    internal sealed class NtUserSendInput : IKeyboardInput
+    public sealed class NtUserSendInput : IKeyboardInput
     {
         public string Name => nameof(NtUserSendInput);
 

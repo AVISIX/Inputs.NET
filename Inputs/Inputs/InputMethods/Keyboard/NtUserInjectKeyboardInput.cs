@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 
 namespace Inputs.InputMethods.Keyboard
 {
-    internal sealed class NtUserInjectKeyboardInput : IKeyboardInput
+    public sealed class NtUserInjectKeyboardInput : IKeyboardInput
     {
         public string Name => nameof(NtUserInjectKeyboardInput);
 

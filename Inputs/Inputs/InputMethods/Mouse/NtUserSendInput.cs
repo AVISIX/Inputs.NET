@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 using static Inputs.Misc.Native.Kernel32;
 
@@ -13,7 +14,7 @@ namespace Inputs.InputMethods.Mouse
     /// <summary>
     /// A mouse input method utilizing the 'NtSendUserInput' NT function.
     /// </summary>
-    internal sealed class NtUserSendInput : IMouseInput
+    public sealed class NtUserSendInput : IMouseInput
     {
         public string Name => nameof(NtUserSendInput);
 
@@ -27,7 +28,7 @@ namespace Inputs.InputMethods.Mouse
         {
             if (NtUserSendInputBytes.Length == 0)
             {
-                var temp = Help.GetUnmanagedFunctionBytes("win32u", "NtUserSendInput");
+                var temp = Misc.Help.GetUnmanagedFunctionBytes("win32u", "NtUserSendInput");
                 if (temp.Length > 0)
                     NtUserSendInputBytes = crypto.Encrypt(temp);
             }
@@ -39,7 +40,7 @@ namespace Inputs.InputMethods.Mouse
             {
                 if (NtUserSendInputBytes.Length == 0)
                 {
-                    NtUserSendInputBytes = Help.GetUnmanagedFunctionBytes("win32u", "NtUserSendInput");
+                    NtUserSendInputBytes = Misc.Help.GetUnmanagedFunctionBytes("win32u", "NtUserSendInput");
 
                     if (NtUserSendInputBytes.Length == 0)
                     {
@@ -86,7 +87,11 @@ namespace Inputs.InputMethods.Mouse
 
         public bool MoveBy(int x = 0, int y = 0)
         {
-            return Call(Native.User32.MOUSEEVENTF_FLAGS.MOUSEEVENTF_MOVE, x, y, 0, 0);
+            var absolute = Misc.Help.CalculateAbsolutePosition(x, y);
+            x = absolute.X;
+            y = absolute.Y;
+
+            return Call(Native.User32.MOUSEEVENTF_FLAGS.MOUSEEVENTF_MOVE | Native.User32.MOUSEEVENTF_FLAGS.MOUSEEVENTF_ABSOLUTE, x, y, 0, 0);
         }
 
         public bool Press(MouseKey key = MouseKey.Left)

@@ -30,8 +30,8 @@ namespace Inputs
         // cleanup (destructor alternative)
         private static void CurrentDomain_ProcessExit(object sender, EventArgs e)
         {
-            standardInput.Dispose();
-            MethodObject.Dispose();
+            standardInput?.Dispose();
+            MethodObject?.Dispose();
         }
 
         #region Public Properties
@@ -58,7 +58,7 @@ namespace Inputs
         /// <typeparam name="T"></typeparam>
         public static void SetMethodFrom<T>() where T : class
         {
-            MethodObject.Dispose();
+            MethodObject?.Dispose();
             MethodObject = MethodResolver<IKeyboardInput>.GetMethodObjectFor<T>();
         }
 
