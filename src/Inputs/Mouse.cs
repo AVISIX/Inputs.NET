@@ -6,15 +6,9 @@ using Inputs.Misc;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Automation;
-using System.Windows.Forms;
 
 using static Inputs.Misc.Native.Kernel32;
 

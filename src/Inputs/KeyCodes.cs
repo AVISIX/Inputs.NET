@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Inputs
 {
-    public static class KeyMapper
+    internal static class KeyMapper
     {
         /// <summary>
         /// Returns the VK key with a matching <paramref name="code"/>

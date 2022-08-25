@@ -1,12 +1,8 @@
 ﻿using Inputs.InputMethods.Keyboard;
 using Inputs.InputMethods;
-using Inputs.Misc;
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Threading;
 
@@ -14,7 +10,6 @@ namespace Inputs
 {
     public static class Keyboard
     {
-        private static XoR crypto = new XoR();
         private static int spoofCounter = 0;
         private static IKeyboardInput standardInput = null;
 
@@ -109,7 +104,7 @@ namespace Inputs
 
             if (delay < 0) delay = .273;
             if (delay == 0) delay = .01;
-
+            
             Press(key);
             Thread.Sleep((int)(delay * 1000.0));
 

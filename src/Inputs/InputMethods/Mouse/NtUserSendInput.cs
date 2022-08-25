@@ -8,7 +8,6 @@ using System.Windows.Forms;
 
 using static Inputs.Misc.Native.Kernel32;
 
-
 namespace Inputs.InputMethods.Mouse
 {
     /// <summary>

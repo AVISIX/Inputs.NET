@@ -1,17 +1,13 @@
 ﻿using ICSharpCode.SharpZipLib.Zip;
 
-using Inputs;
 using Inputs.Misc;
 
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Inputs.InputMethods.Drivers
 {
