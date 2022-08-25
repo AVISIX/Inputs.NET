@@ -74,11 +74,11 @@ Keyboard.Click(VK.KEY_W, 1);
 For more examples, see the demo project.
 
 ## Custom methods
-Besides the built-in input-methods, you may add your own using the interfaces provided by the library.
+Besides the built-in input-methods, you can also add your own using the interfaces provided by the library.
 
 You may look at the implementations of the built-in methods for reference.
 
-Here is a quick example as to how the implementation of a custom input-method could look:
+Here is a quick example as to how an implementation of a custom input-method could look:
 ```csharp
 public class MyMouseMethod : IMouseInput
 {
@@ -114,6 +114,8 @@ Mouse.SetMethodFrom<MyMouseMethod>(); // reflection will find it automatically
 
 ## Contributing
 If you found or created a new method to manipulate either the mouse or keyboard and feel like sharing it with the public, please open a pull request and I will look at it.
+
+Please do **NOT** open a issue because you are being detected by some kind of Anti-Cheat etc. I will ignore and close it.
 
 Any help is greatly appreciated.
 
