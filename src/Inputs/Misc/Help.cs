@@ -22,10 +22,15 @@ namespace Inputs.Misc
                 Y = origin.Y
             });
 
-            x = ((int)(65536.0 / (double)screen.Bounds.Width * (double)x)) + 1;
-            y = ((int)(65536.0 / (double)screen.Bounds.Height * (double)y)) + 1;
+            // as we are using the MOUSEEVENTF_ABSOLUTE-flag, we must get the absolute position of the original position
+            // we then add the new X and Y (absolute) to the origin to move the mouse relative to its location
+            int absoluteOriginX = ((int)(65536.0 / (double)screen.Bounds.Width * (double)origin.X));
+            int absoluteOriginY = ((int)(65536.0 / (double)screen.Bounds.Height * (double)origin.Y));
 
-            return new Point<int>(x, y);
+            int newX = absoluteOriginX + ((int)(65536.0 / (double)screen.Bounds.Width * (double)x)) + 1;
+            int newY = absoluteOriginY + ((int)(65536.0 / (double)screen.Bounds.Height * (double)y)) + 1;
+
+            return new Point<int>(newX, newY);
         }
 
         public static void DispatchInThread(Action block)

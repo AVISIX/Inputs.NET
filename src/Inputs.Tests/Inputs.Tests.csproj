@@ -93,6 +93,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Inputs.TestConsole\Inputs.TestConsole.csproj">
+      <Project>{a241220a-c2dc-4c49-a054-849f62dd1cea}</Project>
+      <Name>Inputs.TestConsole</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Inputs\Inputs.csproj">
       <Project>{8f888016-c2d4-4fa6-bdfb-32f07390e4a5}</Project>
       <Name>Inputs</Name>
