@@ -123,6 +123,7 @@ public class MyMouseMethod : IMouseInput
     public void Dispose()
     {
       // add dispose logic
+      // you can add stuff like releasing the held keys, as the library doesn't take care of it
     }
 
     ~MyMouseMethod() => Dispose();
