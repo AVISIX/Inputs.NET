@@ -12,6 +12,9 @@ After getting annoyed about how tedious it can be to reliably and securely manip
 I originally wrote this for myself, but after seeing how useful it could be for others, I decided to make it public.
 
 ## Features
+
+**For detailed documentation, see the [Wiki](https://github.com/AVISIX/Inputs.NET/wiki)!**
+
 #### Mouse manipulation
 - [mouse_event](https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-mouse_event)
 - NtUserSendInput (*undocumented*)  
