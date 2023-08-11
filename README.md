@@ -19,13 +19,13 @@ I originally wrote this for myself, but after seeing how useful it could be for 
 - [mouse_event](https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-mouse_event)
 - NtUserSendInput (*undocumented*)  
 - NtUserInjectMouseInput (*undocumented*)
-- [ddxoft virtual mouse driver](https://github.com/ddxoft/master)
+- [ddxoft virtual mouse driver](https://github.com/ddxoft/master) (**WARNING**: There has been reports that this driver sends requests to a server. Use with caution.)
 
 #### Keyboard manipulation
 - [keybd_event](https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-keybd_event)
 - NtUserSendInput (*undocumented*)
 - NtUserInjectKeyboardInput (*undocumented*)
-- [ddxoft virtual keyboard driver](https://github.com/ddxoft/master)
+- [ddxoft virtual keyboard driver](https://github.com/ddxoft/master) (**WARNING**: There has been reports that this driver sends requests to a server. Use with caution.)
 
 #### Other features
 - Keyboard &  mouse hooks using the [WinApi](https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-setwindowshookexa)
